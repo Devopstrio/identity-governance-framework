@@ -4,17 +4,16 @@
 
 <h1>Identity Governance Framework</h1>
 
-<p><strong>The Institutional-Grade Control Plane for Workforce, Machine, and Privileged Identity Lifecycle Management, Access Certification, and Risk Governance</strong></p>
+<p><strong>The Institutional-Grade Platform for Identity Lifecycle Management (IGA), Access Certification, and Compliance Governance.</strong></p>
 
-[![Standard: NIST--800--63](https://img.shields.io/badge/Standard-NIST--800--63-blue.svg?style=for-the-badge&labelColor=000000)]()
-[![Status: Production--Ready](https://img.shields.io/badge/Status-Production--Ready-indigo.svg?style=for-the-badge&labelColor=000000)]()
-[![Security: Zero--Trust](https://img.shields.io/badge/Security-Zero--Trust-green.svg?style=for-the-badge&labelColor=000000)]()
-[![Compliance: SOC2--HIPAA](https://img.shields.io/badge/Compliance-SOC2--HIPAA-ff69b4?style=for-the-badge&labelColor=000000)]()
+[![Standard: Identity-Governance-Excellence](https://img.shields.io/badge/Standard-IGA--Excellence-blue.svg?style=for-the-badge&labelColor=000000)]()
+[![Status: Production--Ready](https://img.shields.io/badge/Status-Production--Ready-emerald.svg?style=for-the-badge&labelColor=000000)]()
+[![Focus: Least--Privilege--Governance](https://img.shields.io/badge/Focus-Least--Privilege--Governance-indigo.svg?style=for-the-badge&labelColor=000000)]()
 
 <br/>
 
 > **"Identity is the ultimate perimeter."** 
-> The Identity Governance Framework is a flagship platform designed to centralize the orchestration of human and machine identities across fragmented hybrid environments. It provides the automation, governance, and auditability required to enforce least-privilege at global scale.
+> **Identity Governance Framework** is an enterprise-grade platform designed to provide a secure, measurable, and highly automated foundation for global identity governance (IGA) operations. It orchestrates the complex lifecycle of identity access—from JML (Joiner, Mover, Leaver) automation and multi-stage access certification to toxic combination (SoD) detection and unified identity lifecycle auditing.
 
 </div>
 
@@ -22,377 +21,264 @@
 
 ## 🏛️ Executive Summary
 
-The **Identity Governance Framework** is a premium metrics and automation solution designed for CIOs, CISOs, and Identity Governance Leaders. In the modern enterprise, identity has moved from a back-office service to the frontline of security. The explosion of SaaS applications, multi-cloud workloads, and remote workforces has created "Identity Sprawl," where access is often granted but rarely revoked.
+Fragmented identity lifecycles and manual access reviews are strategic operational liabilities; lack of centralized governance orchestration is a primary barrier to organizational Zero Trust maturity. Organizations fail to maintain a secure identity posture not because of a lack of directories, but because of fragmented governance standards, lack of automated entitlement validation, and an inability to orchestrate identity landing zones with operational precision.
 
-This platform provides a **Unified Identity Governance (IGA) Engine**. It demonstrates how to automate the entire identity lifecycle—from "Joiner" (onboarding) to "Mover" (role change) to "Leaver" (offboarding). By integrating **FastAPI**, **React 18**, and **Terraform**, it bridges the gap between HR systems (Workday/SAP), directories (AD/Entra), and cloud platforms (AWS/Azure/GCP), ensuring that the right people have the right access to the right resources for the right reasons.
-
----
-
-## 📉 The "Identity Debt" Problem
-
-Enterprises facing rapid growth often accumulate significant identity risk:
-- **Entitlement Sprawl**: Over-provisioned users with far more access than their job requires.
-- **Toxic Combinations**: Users holding conflicting roles (e.g., creating and approving payments).
-- **Orphaned Accounts**: Dormant accounts from former employees that remain active targets.
-- **Audit Fatigue**: Manual access certification processes that are slow, inaccurate, and burdensome.
+This platform provides the **Governance Intelligence Plane**. It implements a complete **Enterprise Governance-as-Code Framework**, enabling Security and Compliance teams to manage global identity lifecycles as first-class citizens. By automating the identification of toxic permission combinations through real-time entitlement analysis and orchestrating the JIT provisioning of temporary access, we ensure that every organizational identity—from core directory admins to routine application users—is governed by default, audited for history, and strictly aligned with institutional governance frameworks.
 
 ---
 
-## 🚀 Strategic Drivers & Business Outcomes
+## 📐 Architecture Storytelling: Principal Reference Models
 
-### 🎯 Strategic Drivers
-- **Zero Trust Acceleration**: Moving from perimeter-based security to identity-centric security.
-- **Workforce Agility**: Enabling employees and contractors to be productive from Day 1 with automated "Birthright Access."
-- **Institutional Governance**: Establishing an immutable audit trail for every access decision.
+### 1. Principal Architecture: Global Identity Governance & Compliance Intelligence Plane
+This diagram illustrates the end-to-end flow from human and machine identity ingestion to JML automation, access certification, SoD validation, and institutional governance auditing.
 
-### 💰 Business Outcomes
-- **95% Reduction in Orphaned Accounts**: Automated offboarding ensures access is killed immediately upon termination.
-- **Zero Unremediated SoD Violations**: Real-time detection of Segregation of Duties conflicts.
-- **Simplified Audit Compliance**: Push-button evidence for SOC2, HIPAA, and GDPR certifications.
-
----
-
-## 📐 Architecture Storytelling: 30+ Advanced Diagrams
-
-### 1. Executive Identity Architecture
-*The high-level orchestration of identity across the enterprise ecosystem.*
-```mermaid
-graph TD
-    subgraph "Identity Governance Platform"
-        Portal[Management Portal]
-        Engine[Lifecycle Engine]
-        Analytics[Risk Analytics]
-        DB[(Identity Ledger)]
-    end
-
-    subgraph "Sources of Truth"
-        HR[Workday / SAP]
-        Dir[AD / Entra / Okta]
-    end
-
-    subgraph "Target Systems"
-        AWS[AWS IAM]
-        Azure[Azure RBAC]
-        SaaS[Salesforce / Slack]
-    end
-
-    HR --> Engine
-    Dir <--> Engine
-    Engine --> TargetSystems
-    Engine --> DB
-    Analytics --> DB
-    Portal --> Engine
-```
-
-### 2. Hybrid IAM Topology
-*Bridging on-premises AD forests with modern cloud identity providers.*
 ```mermaid
 graph LR
-    subgraph "On-Premises"
-        AD[Active Directory]
-        LDAP[Legacy Apps]
+    %% Subgraph Definitions
+    subgraph IdentityIngress["Human & Machine Ingress"]
+        direction TB
+        HR_Systems["Workday / SAP / BambooHR"]
+        Machine_Registry["Workload & Bot Registry"]
+        Partner_Directory["B2B & Guest Directories"]
     end
-    subgraph "Identity Bridge"
-        Connect[Entra Connect / Okta Agent]
+
+    subgraph IntelligenceEngine["Governance Intelligence Hub"]
+        direction TB
+        API["FastAPI Governance Gateway"]
+        JML_Orchestrator["Joiner / Mover / Leaver Hub"]
+        CertificationEngine["Access Review & Cert Hub"]
+        SoD_Validator["Toxic Combination (SoD) Hub"]
     end
-    subgraph "Cloud IDP"
-        Entra[Entra ID]
-        Okta[Okta]
+
+    subgraph OperationsPlane["Distributed Governance Fleet"]
+        direction TB
+        ProvisioningWorkers["JIT & Lifecycle Pushers"]
+        EntitlementScanners["AIOps Privilege Pattern Scanners"]
+        ReviewProxies["Attestation & Review Proxies"]
     end
-    AD --> Connect
-    Connect --> Entra
-    Entra --> SaaS[Cloud Apps]
-```
 
-### 3. Joiner / Mover / Leaver (JML) Workflow
-*The automated journey of an identity through its lifecycle.*
-```mermaid
-sequenceDiagram
-    participant HR as HR System
-    participant IGA as IGA Engine
-    participant Dir as Directory
-    participant App as Target App
+    subgraph OperationsHub["Institutional Governance Hub"]
+        direction TB
+        Scorecard["Governance Maturity Score"]
+        Analytics["Certification & JML Stats"]
+        Audit["Forensic Governance Metadata Lake"]
+    end
 
-    HR->>IGA: New Hire Event
-    IGA->>IGA: Assign Birthright Roles
-    IGA->>Dir: Create Account
-    IGA->>App: Provision Access
-    IGA-->>HR: Onboarding Complete
-```
+    subgraph DevOps["Governance-as-Code Framework"]
+        direction TB
+        TF["Terraform Governance Modules"]
+        PrivilegeBot["Shadow Admin Drift Validator"]
+        ChatOps["Access Approval Hub"]
+    end
 
-### 4. Role-Based Access Control (RBAC) Model
-*Hierarchical role engineering and inheritance.*
-```mermaid
-graph TD
-    Business[Business Role: Finance Manager]
-    Technical1[Technical Role: SAP Write]
-    Technical2[Technical Role: AWS Finance-ReadOnly]
+    %% Flow Arrows
+    IdentityIngress -->|1. Submit Identity Event| API
+    API -->|2. Orchestrate JML| JML_Orchestrator
+    JML_Orchestrator -->|3. Validate SoD| SoD_Validator
+    SoD_Validator -->|4. Trigger Review| CertificationEngine
     
-    Business --> Technical1
-    Business --> Technical2
-    User((Employee)) --> Business
-```
-
-### 5. Access Recertification Cycle
-*Ensuring access remains relevant and necessary.*
-```mermaid
-graph LR
-    Start[Launch Campaign] --> Assign[Assign Reviewers]
-    Assign --> Review[Reviewer Decision]
-    Review -->|Approve| Keep[Maintain Access]
-    Review -->|Revoke| Deprovision[Auto-Revoke Access]
-    Deprovision --> Audit[Update Audit Log]
-```
-
-### 6. Privileged Access Management (PAM) Session
-*Just-In-Time elevation for administrative tasks.*
-```mermaid
-sequenceDiagram
-    participant Admin
-    participant Vault
-    participant Target
-
-    Admin->>Vault: Request Access (JIT)
-    Vault->>Vault: Check Policy / Approval
-    Vault-->>Admin: Dynamic Credential
-    Admin->>Target: Execute Task
-    Admin->>Vault: Check-in / Expire
-    Vault->>Target: Rotate Password
-```
-
-### 7. Risk-Based Access Scoring
-*Visualizing the risk profile of individual identities.*
-```mermaid
-graph TD
-    Context[IP/Device/Location] --> Score[Risk Score]
-    Entitlements[High-Risk Roles] --> Score
-    Behavior[Anomalous Logins] --> Score
-    Score -->|Score > 80| Trigger[Automatic Review]
-```
-
-### 8. Segregation of Duties (SoD) Conflict Detection
-*Preventing toxic combinations of permissions.*
-```mermaid
-graph LR
-    RoleA[Create Vendor]
-    RoleB[Approve Payment]
-    Conflict{SoD Check}
+    CertificationEngine -->|5. Execute Provision| OperationsPlane
+    OperationsPlane -->|6. Notify Status| ChatOps
+    API -->|7. Visualize Health| Scorecard
     
-    RoleA --> Conflict
-    RoleB --> Conflict
-    Conflict -- "Violation" --> Block[Block Assignment]
+    Scorecard -->|8. Track Maturity| Analytics
+    Scorecard -->|9. Record Event| Audit
+    
+    TF -->|10. Provision Hub| IntelligenceEngine
+    PrivilegeBot -->|11. Inject Privilege Risk| JML_Orchestrator
+    Audit -->|12. Improve Governance| ProvisioningWorkers
+
+    %% Styling
+    classDef ingress fill:#f5f5f5,stroke:#616161,stroke-width:2px;
+    classDef intel fill:#e8eaf6,stroke:#1a237e,stroke-width:2px;
+    classDef operations fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef ops fill:#ede7f6,stroke:#311b92,stroke-width:2px;
+    classDef devops fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
+
+    class IdentityIngress ingress;
+    class IntelligenceEngine intel;
+    class OperationsPlane operations;
+    class OperationsHub ops;
+    class DevOps devops;
 ```
 
-### 9. Machine Identity Lifecycle
-*Managing the lifecycle of non-human entities.*
-```mermaid
-graph TD
-    Request[Bot Request] --> Issue[Issue Certificate/Secret]
-    Issue --> Monitor[Usage Monitoring]
-    Monitor --> Expiry{Expired?}
-    Expiry -- "Yes" --> Rotate[Auto-Rotate]
-```
+### 2. The Identity Governance Lifecycle Flow
+The continuous path of an identity governance request from initial request and approval (quorum) to active JIT provisioning, certification (review), revocation, and institutional forensic auditing.
 
-### 10. Compliance Evidence Pipeline
-*Generating immutable reports for regulatory audits.*
-```mermaid
-graph LR
-    Events[Identity Events] --> Ledger[Immutable Audit Log]
-    Ledger --> Report[SOC2 Compliance PDF]
-    Report --> Auditor[Auditor Portal]
-```
-
-### 11. Joiner Birthright Access Model
-```mermaid
-graph TD
-    New[New Employee] --> Dept{Department?}
-    Dept -->|Sales| S1[CRM Access]
-    Dept -->|Eng| E1[GitHub Access]
-    Dept -->|Eng| E2[AWS Sandbox]
-```
-
-### 12. Mover Department Transfer
 ```mermaid
 graph LR
-    Old[Sales Access] --> Delta[Comparison]
-    Delta --> Revoke[Remove Sales Roles]
-    Delta --> Grant[Add Engineering Roles]
+    Request["Request (Access)"] --> Approve["Approve (Quorum)"]
+    Approve --> Provision["Provision (JIT)"]
+    Provision --> Certify["Certify (Review)"]
+    Certify --> Audit["Audit & Revoke"]
 ```
 
-### 13. Leaver Rapid De-provisioning
-```mermaid
-graph TD
-    Term[Termination] --> Lock[Lock Directory]
-    Lock --> Revoke[Kill Cloud Tokens]
-    Revoke --> Audit[Final Access Export]
-```
+### 3. Distributed Identity Governance Topology
+Strategically orchestrating governance across global engineering geographic clusters and multi-cloud environments, providing a unified institutional view of global identity health and lifecycle maturity.
 
-### 14. Access Request Lifecycle
-```mermaid
-stateDiagram-v2
-    Requested --> Pending: Manager Approval
-    Pending --> Approved: Security Review
-    Approved --> Provisioned: Automated Push
-```
-
-### 15. Role Mining & Analytics
 ```mermaid
 graph LR
-    Raw[Existing Permissions] --> ML[Clustering Engine]
-    ML --> Candidate[Suggested Role]
+    EMEA["Region: EMEA Identity"] -->|Govern| Hub["Unified Governance Hub"]
+    APAC["Region: APAC Identity"] -->|Govern| Hub
+    AMER["Region: AMER Identity"] -->|Govern| Hub
+    Hub --- Logic["Global Compliance Engine"]
 ```
 
-### 16. Entitlement Sprawl Analysis
+### 4. Joiner, Mover, Leaver (JML) Automation Flow
+Executing complex logic for managing the lifecycle of human identities from onboarding to offboarding, ensuring every organizational identity is provisioned and de-provisioned according to institutional standards.
+
 ```mermaid
 graph TD
-    User -->|Has| Many[100+ Entitlements]
-    Many -->|Used| Five[Only 5 Active]
-    Many -->|Unused| Risky[95 Dormant Targets]
+    HR_Event["HR System Lifecycle Event"] --> Joiner["Rule: Birthright Provisioning"]
+    Joiner --> Mover["Rule: Role Change Delta"]
+    Mover --> Leaver["Rule: Immediate Termination"]
+    Joiner & Mover & Leaver -->|Evaluate| Context["PATH: Identity Lifecycle View"]
+    Context --- Estimate["Lifecycle Integrity Score"]
 ```
 
-### 17. Multi-Factor Auth (MFA) Decision
-```mermaid
-graph TD
-    Login[Auth Request] --> Context{Context Risk?}
-    Context -- High --> MFA[Push Notification]
-```
+### 5. Multi-Stage Access Review & Certification Flow
+Automatically verifying user access against institutional security and compliance standards, managing multi-stage approvals and automated remediation, ensuring institutional audit readiness by default.
 
-### 18. Service Account Governance
 ```mermaid
 graph LR
-    Svc[Svc Account] --> Owner[Assigned Manager]
-    Owner --> Certify[Recertify Usage]
+    Campaign["Certification Campaign"] -->|Apply| Guard["Multi-Stage Review Hub"]
+    Guard -->|Violate| Alert["Access Expiry Alert"]
+    Guard -->|Pass| Verify["Status: Certified Access"]
+    Verify --- Audit["Certification Compliance Log"]
 ```
 
-### 19. Toxic Combination Detection (SoD)
-```mermaid
-graph TD
-    A[Role: PO Entry] + B[Role: PO Approval] --> C[Violation Alert]
-```
+### 6. Just-In-Time (JIT) Provisioning & Auto-Revocation Flow
+Managing the lifecycle of a privileged request, automatically ensuring users only have the access they need, exactly when they need it, with automated cleanup, ensuring zero-latency security confidence.
 
-### 20. Just-In-Time (JIT) Provisioning
 ```mermaid
 graph LR
-    Req[Req: DB Admin] --> Grant[Temp Role: 4 Hours]
-    Grant -->|Expired| Del[Auto-Revoke]
+    Request["Privileged Request"] -->|Provision| JIT["Temporary Access JIT"]
+    JIT -->|Duration| Expiry["Auto-Revocation Bot"]
+    Expiry -->|Record| Audit["Access Usage Ledger"]
+    Audit --- Monitor["Real-Time JIT Loop"]
 ```
 
-### 21. Identity Sync Pipeline
+### 7. Institutional Identity Maturity Scorecard
+Grading organizational performance based on key indicators: Access Review Completion, JIT Adoption Rate, and Toxic Combination (SoD) Coverage Index.
+
 ```mermaid
 graph TD
-    Source[Active Directory] --> Sync[Sync Agent]
-    Sync --> IGA[IGA Vault]
+    Post["Governance Health: 98%"] --> Risk["Compliance Gap: 2%"]
+    Post --- C1["Review Rate (100%)"]
+    Post --- C2["JIT Adoption (95%)"]
 ```
 
-### 22. Role Hierarchy Inheritance
+### 8. Identity & RBAC for Governance Roles
+Managing fine-grained access to governance hubs, provisioning workers, and audit logs between Identity Governors, Access Reviewers, and Resource Owners.
+
 ```mermaid
 graph TD
-    Base[Employee Base] --> Lead[Team Lead]
-    Lead --> Mgr[Department Mgr]
+    Governor["Identity Governor"] --> Hub["Manage governance rules"]
+    Reviewer["Access Reviewer"] --> Exec["Execute certification checks"]
+    Owner["Resource Owner"] --> Audit["Verify Governance Proofs"]
 ```
 
-### 23. Approval Delegation Workflow
+### 9. IaC Deployment: Governance-as-Code Framework
+Using modular Terraform to deploy and manage the versioned distribution of the governance tracking hubs, lifecycle workers, and forensic metadata lakes.
+
 ```mermaid
 graph LR
-    Mgr[Approver] -->|Out of Office| Del[Delegate]
-    Del --> Task[Approval Action]
+    HCL["Infrastructure Code"] --> TF["Terraform Apply"]
+    TF --> Engine["Governance Control Plane"]
+    Engine --> Clusters["HA Validation Fleet"]
 ```
 
-### 24. Access Request Portal Architecture
-```mermaid
-graph TD
-    UI[Web Portal] --> Search[App Catalog]
-    Search --> Cart[Request Bundle]
-    Cart --> API[Workflow Engine]
-```
+### 10. AIOps Toxic Combination & SoD Validation Flow
+Using advanced analytics to identify sudden surges in Segregation of Duties (SoD) violations, suspicious privilege escalations, or unusual entitlement pattern changes that could result in institutional risk.
 
-### 25. Attestation Campaign Lifecycle
 ```mermaid
 graph LR
-    Sched[Quarterly Trigger] --> Launch[Notify Reviewers]
-    Launch --> Review[Manual Review]
-    Review --> End[Report Generation]
+    SoD["Entitlement Conflict"] --> Analyzer["SoD Detection Bot"]
+    Analyzer -->|Violation| Alert["Toxic Combination Alert"]
+    Analyzer -->|Normal| Pass["Status Optimal"]
 ```
 
-### 26. MFA Posture Dashboard Data Flow
-```mermaid
-graph TD
-    IDP[Okta/Entra] --> Collector[Aggregator]
-    Collector --> Viz[Posture Charts]
-```
+### 11. Metadata Lake for Forensic Governance Audit
+Storing long-term records of every access request, every approval decision recorded, and every certification event for institutional record-keeping, compliance auditing, and post-governance forensics.
 
-### 27. SCIM Integration Architecture
-```mermaid
-sequenceDiagram
-    IGA->>SaaS: POST /Users (SCIM)
-    SaaS-->>IGA: 201 Created
-```
-
-### 28. Behavioral Identity Analytics
 ```mermaid
 graph LR
-    Log[Auth Logs] --> UEBA[Behavior Model]
-    UEBA --> Risk[Risk Score Update]
+    Event["Governance Interaction Event"] --> Stream["Forensic Stream"]
+    Stream --> Lake["Governance Metadata Lake"]
+    Lake --> Trends["Compliance Efficiency Trends"]
 ```
 
-### 29. Privileged Session Review
-```mermaid
-graph TD
-    Ssh[SSH Session] --> Record[Recording Storage]
-    Record --> Review[Auditor Playback]
-```
+---
 
-### 30. Governance Scorecard Metrics
-```mermaid
-graph LR
-    Stats[Identity Stats] --> Score[Maturity Index]
-```
+## 🏛️ Core Governance Pillars
+
+1.  **Unified Lifecycle Coordination**: Maximizing resilience by centralizing all identity governance through a single institutional plane.
+2.  **Automated Entitlement Validation**: Eliminating "shadow privilege" scenarios through proactive scoring and pattern verification.
+3.  **Sequential Synchronization Intelligence**: Ensuring zero-interruption operations through dependency-aware multi-cloud provisioning.
+4.  **Zero-Trust Access Protection**: Automatically enforcing identity-based access and rule evaluation across all governance tiers.
+5.  **Autonomous Governance Logic**: Guaranteeing reliability through automated industry-specific identity monitoring runbooks.
+6.  **Full Governance Auditability**: Immutable recording of every access decision and certification for institutional forensics.
 
 ---
 
 ## 🛠️ Technical Stack & Implementation
 
-### Core Components
-- **Orchestrator**: FastAPI / Python 3.11+
-- **Database**: PostgreSQL (Identity Ledger)
-- **Queue**: Redis (Asynchronous Provisioning)
-- **Frontend**: React 18 / Tailwind / Recharts
+### Governance Engine & APIs
+*   **Framework**: Python 3.11+ / FastAPI.
+*   **JML Engine**: Custom Python-based logic for lifecycle automation and DORA-style identity metrics.
+*   **Integrations**: Native connectors for HR Systems (Workday), IdPs (Entra ID, Okta), and Cloud IAM APIs.
+*   **Persistence**: PostgreSQL (Governance Ledger) and Redis (Live Governance State).
+*   **Auth Orchestrator**: Federated OIDC/SAML for least-privilege identity management access.
 
-### Compliance Frameworks
-- **NIST 800-63**: Digital Identity Guidelines
-- **SOC2 Type II**: Security, Availability, Processing Integrity
-- **HIPAA**: Safeguarding Protected Health Information (PHI)
+### Governance Dashboard (UI)
+*   **Framework**: React 18 / Vite.
+*   **Theme**: Dark, Indigo, Slate (Modern high-fidelity governance aesthetic).
+*   **Visualization**: D3.js for entitlement topologies and Recharts for certification velocity analytics.
+
+### Infrastructure & DevOps
+*   **Runtime**: AWS EKS or Azure Kubernetes Service (AKS) for management plane.
+*   **Governance Hub**: Managed event sourcing for immutable identity security timeline reconstruction.
+*   **IaC**: Modular Terraform for deploying the governance landing zone and validation fleet.
+
+---
+
+## 🏗️ IaC Mapping (Module Structure)
+
+| Module | Purpose | Real Services |
+| :--- | :--- | :--- |
+| **`infrastructure/gov_hub`** | Central management plane | EKS, PostgreSQL, Redis |
+| **`infrastructure/workers`** | Distributed lifecycle provisioners | K8s Workers, Cloud APIs |
+| **`infrastructure/connectors`** | HR & IdP Ingestion Hubs | Webhooks, Lambda |
+| **`infrastructure/auditing`** | Forensic governance sinks | S3, Athena, Quicksight |
 
 ---
 
 ## 🚀 Deployment Guide
 
-### Local Development
+### Local Principal Environment
 ```bash
-# Clone the repository
+# Clone the governance platform
 git clone https://github.com/devopstrio/identity-governance-framework.git
 cd identity-governance-framework
 
-# Setup environment
+# Configure environment
 cp .env.example .env
 
-# Launch platform
-make up
+# Launch the Governance stack
+make init
+
+# Trigger a mock JML event and automated access certification simulation
+make simulate-governance
 ```
 
-### Monitoring & Operations
-- **Alerting**: Real-time alerts for failed de-provisioning events.
-- **Reporting**: Weekly executive summary of access risk trends.
+Access the Governance Dashboard at `http://localhost:3000`.
 
 ---
 
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
 <div align="center">
-
-### 🛡️ Built by Devopstrio
-*Institutional-Grade Platforms for the Modern Enterprise*
-
-[Website](https://devopstrio.com) • [Contact](mailto:support@devopstrio.com) • [LinkedIn](https://linkedin.com/company/devopstrio)
-
-© 2024 Devopstrio. All rights reserved.
-
+  <p>© 2026 Devopstrio. All rights reserved.</p>
 </div>
